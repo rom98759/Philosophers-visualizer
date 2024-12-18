@@ -14,6 +14,24 @@
 	<main>
 		<textarea id="logs-input" placeholder="Paste your logs here :&#10;<timestamp> <philosopher_number> <action>"></textarea>
 		<button id="generate-button">Generate Chart</button>
+		<div id="controls-container">
+			<div id="zoom-controls">
+				<label for="zoom-slider">Zoom:</label>
+				<input type="range" id="zoom-slider" min="1" max="5" step="0.1" value="1.5">
+				<span id="zoom-level">1.5x</span>
+			</div>
+			<div id="legend-container">
+				<div id="legend">
+					<h3>Legend:</h3>
+					<ul>
+						<li><span class="legend-item eating"></span> Eating</li>
+						<li><span class="legend-item thinking"></span> Thinking</li>
+						<li><span class="legend-item sleeping"></span> Sleeping</li>
+						<li><span class="legend-item unknown"></span> Unknown Action</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		<div id="gantt-container">
 			<!-- Diagram of the philosophers' actions -->
 		</div>

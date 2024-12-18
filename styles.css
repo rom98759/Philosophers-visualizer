@@ -12,22 +12,19 @@ header {
 	padding: 1em;
 }
 
+#logs-input, button {
+	width: 70%;
+	max-width: 600px;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	display: block;
+}
+
 main {
 	padding: 1em;
 }
 
-textarea {
-	width: 100%;
-	height: 150px;
-	margin-bottom: 1em;
-	padding: 0.5em;
-	font-size: 1em;
-	resize: none;
-}
-
 button {
-	display: block;
-	width: 100%;
 	padding: 0.7em;
 	background-color: #259b38c4;
 	color: white;
@@ -39,6 +36,38 @@ button {
 
 button:hover {
 	background-color: #3F5A47;
+}
+
+textarea {
+	width: 100%;
+	height: 150px;
+	margin-bottom: 1em;
+	padding: 0.5em;
+	font-size: 1em;
+	resize: none;
+}
+
+#zoom-controls {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+#zoom-slider {
+	width: 100px;
+}
+
+#zoom-level {
+	font-size: 1em;
+}
+
+#legend-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
 }
 
 #gantt-container {
@@ -107,4 +136,50 @@ button:hover {
 	white-space: pre-line;
 	z-index: 10;
 	display: block;
+}
+
+#controls-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+	gap: 40px;
+}
+
+#legend-container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 20px;
+}
+
+#legend {
+	display: flex;
+	font-size: 1em;
+	align-items: center;
+	gap: 15px;
+}
+
+.legend-item {
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.eating { background-color: #fbb4ae; }
+.thinking { background-color: #ccebc5; }
+.sleeping { background-color: #b3cde3; }
+.unknown { background-color: #929292a2; }
+
+.legend-item span {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin-right: 10px;
+}
+
+.legend-item h3 {
+	margin: 0;
+	font-size: 1.2em;
 }

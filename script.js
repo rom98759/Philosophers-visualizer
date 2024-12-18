@@ -47,6 +47,13 @@ function parseLogs(logs) {
 	return actions;
 }
 
+let zoomFactor = 1;
+
+function updateZoomLevel() {
+	const zoomLevelDisplay = document.getElementById('zoom-level');
+	zoomLevelDisplay.textContent = `${zoomFactor}x`;
+}
+
 function generateGantt(actions) {
 	const container = document.getElementById('gantt-container');
 	container.innerHTML = '';
@@ -77,8 +84,8 @@ function generateGantt(actions) {
 			const duration = action.end !== null ? action.end - action.start : maxTimestamp - action.start;
 			const offset = action.start - minTimestamp;
 
-			bar.style.width = `${(duration / totalDuration) * 100}%`;
-			bar.style.left = `${(offset / totalDuration) * 100}%`;
+			bar.style.width = `${(duration / totalDuration) * 100 * zoomFactor}%`;
+			bar.style.left = `${(offset / totalDuration) * 100 * zoomFactor}%`;
 
 			bar.style.maxWidth = '100%';
 			bar.style.width = Math.min(parseFloat(bar.style.width), 100) + '%';
@@ -109,6 +116,25 @@ function generateGantt(actions) {
 }
 
 document.getElementById('generate-button').addEventListener('click', () => {
+	const logs = document.getElementById('logs-input').value;
+
+	try {
+		const actions = parseLogs(logs);
+
+		if (actions.length === 0) {
+			alert('No valid actions found in logs.');
+			return;
+		}
+
+		generateGantt(actions);
+	} catch (error) {
+		alert(error.message);
+	}
+});
+
+document.getElementById('zoom-slider').addEventListener('input', (event) => {
+	zoomFactor = parseFloat(event.target.value);
+	updateZoomLevel();
 	const logs = document.getElementById('logs-input').value;
 
 	try {
