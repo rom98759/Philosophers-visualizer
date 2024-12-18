@@ -1,126 +1,110 @@
-/* Styles de base */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 header {
-    background-color: #4C6B56; /* Vert foncé */
-    color: white;
-    text-align: center;
-    padding: 1em;
+	background-color: #259b38c4;
+	color: white;
+	text-align: center;
+	padding: 1em;
 }
 
 main {
-    padding: 1em;
+	padding: 1em;
 }
 
 textarea {
-    width: 100%;
-    height: 150px;
-    margin-bottom: 1em;
-    padding: 0.5em;
-    font-size: 1em;
-    resize: none;
+	width: 100%;
+	height: 150px;
+	margin-bottom: 1em;
+	padding: 0.5em;
+	font-size: 1em;
+	resize: none;
 }
 
 button {
-    display: block;
-    width: 100%;
-    padding: 0.7em;
-    background-color: #4C6B56; /* Vert foncé */
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-    margin-bottom: 1em;
+	display: block;
+	width: 100%;
+	padding: 0.7em;
+	background-color: #259b38c4;
+	color: white;
+	border: none;
+	cursor: pointer;
+	font-size: 1em;
+	margin-bottom: 1em;
 }
 
 button:hover {
-    background-color: #3F5A47; /* Vert plus foncé */
+	background-color: #3F5A47;
 }
 
-
-/* Container du diagramme avec une barre de défilement horizontale */
 #gantt-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    overflow-x: auto;
-    /* Permet le défilement horizontal */
-    white-space: nowrap;
-    /* Empêche le contenu de se casser */
-    padding-bottom: 20px;
-    /* Ajouter un peu d'espace en bas pour la scrollbar */
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+	overflow-x: auto;
+	white-space: nowrap;
+	padding-bottom: 20px;
 }
 
-/* Ajustement des rangées de philosophes */
 .philosopher-row {
-    display: flex;
-    align-items: center;
-    position: relative;
-    height: 30px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	height: 30px;
 }
 
-/* Label du philosophe avec marge */
 .philosopher-label {
-    width: 150px;
-    text-align: right;
-    margin-right: 2em;
-    font-weight: bold;
+	width: 150px;
+	text-align: right;
+	margin-right: 2em;
+	font-weight: bold;
 }
 
-/* Barres représentant les actions des philosophes */
 .bar {
-    position: absolute;
-    height: 100%;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 12px;
-    color: white;
-    overflow: hidden;
-    max-width: 100%;
-    /* Limiter la taille à 100% */
-    margin-left: 160px;
-    /* Ajouter une marge à gauche pour éviter d'écraser le nom */
-    display: flex;
-    justify-content: center;
-    /* Centrer horizontalement */
-    align-items: center;
-    /* Centrer verticalement */
+	position: absolute;
+	height: 100%;
+	border-radius: 4px;
+	text-align: center;
+	font-size: 12px;
+	color: white;
+	overflow: hidden;
+	max-width: 100%;
+	margin-left: 160px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-/* Couleurs des différentes actions */
 .bar.eating {
-    background-color: #D37C7C; /* Rouge clair foncé */
+	background-color: #fbb4ae;
 }
 
 .bar.thinking {
-    background-color: #8C9F79; /* Vert mousse foncé */
+	background-color: #ccebc5;
 }
 
 .bar.sleeping {
-    background-color: #7A9BB7; /* Bleu gris foncé */
+	background-color: #b3cde3;
 }
 
 .bar.unknown {
-    background-color: #B6B6B6; /* Gris foncé */
+	background-color: #929292a2;
 }
 
-
-/* Infobulle avec la description de l'action */
 .bar:hover::after {
-    position: absolute;
-    top: -30px;
-    left: 0;
-    background-color: #333; /* Fond sombre */
-    color: white;
-    padding: 5px;
-    font-size: 0.9em;
-    border-radius: 3px;
-    white-space: pre-line;
-    z-index: 10;
-    display: block;
+	position: absolute;
+	top: -30px;
+	left: 0;
+	background-color: #333;
+	color: white;
+	padding: 5px;
+	font-size: 0.9em;
+	border-radius: 3px;
+	white-space: pre-line;
+	z-index: 10;
+	display: block;
 }
