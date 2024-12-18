@@ -1,0 +1,116 @@
+/* Styles de base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+main {
+    padding: 1em;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    font-size: 1em;
+    resize: none;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 0.7em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+/* Container du diagramme avec une barre de défilement horizontale */
+#gantt-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    overflow-x: auto; /* Permet le défilement horizontal */
+    white-space: nowrap; /* Empêche le contenu de se casser */
+    padding-bottom: 20px; /* Ajouter un peu d'espace en bas pour la scrollbar */
+}
+
+/* Ajustement des rangées de philosophes */
+.philosopher-row {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 30px;
+}
+
+/* Label du philosophe avec marge */
+.philosopher-label {
+    width: 150px;
+    text-align: right;
+    margin-right: 2em;
+    font-weight: bold;
+}
+
+/* Barres représentant les actions des philosophes */
+/* Barres représentant les actions des philosophes */
+.bar {
+    position: absolute;
+    height: 100%;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 12px;
+    color: white;
+    overflow: hidden;
+    max-width: 100%; /* Limiter la taille à 100% */
+    margin-left: 160px; /* Ajouter une marge à gauche pour éviter d'écraser le nom */
+}
+
+/* Couleurs des différentes actions */
+.bar.eating {
+    background-color: red;
+}
+
+.bar.thinking {
+    background-color: green;
+}
+
+.bar.sleeping {
+    background-color: blue;
+}
+
+.bar.unknown {
+    background-color: gray;
+}
+
+/* Infobulle avec la description de l'action */
+.bar:hover::after {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    font-size: 0.9em;
+    border-radius: 3px;
+    white-space: pre-line;
+    z-index: 10;
+    display: block;
+}
