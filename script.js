@@ -9,7 +9,7 @@ function parseLogs(logs) {
 	for (const line of lines) {
 		const match = line.match(regex);
 		if (!match) {
-			throw new Error(`Log mal formaté : "${line}"`);
+			throw new Error(`Malformed log: "${line}"`);
 		}
 
 		const timestamp = parseInt(match[1]);
@@ -17,7 +17,7 @@ function parseLogs(logs) {
 		const action = match[3];
 
 		if (timestamp < previousTimestamp) {
-			throw new Error("Les timestamps ne sont pas par ordre croissant.");
+			throw new Error("Timestamps are not in ascending order.");
 		}
 		previousTimestamp = timestamp;
 
@@ -34,14 +34,12 @@ function parseLogs(logs) {
 		};
 	}
 
-	// Calculer la moyenne des durées pour les actions qui ont une fin
 	const durations = actions.filter(action => action.end !== null).map(action => action.end - action.start);
 	const averageDuration = durations.length > 0 ? durations.reduce((sum, duration) => sum + duration, 0) / durations.length : 0;
 
-	// Ajoute l'action en cours avec une fin basée sur la moyenne des durées si nécessaire
 	for (const key in lastActions) {
 		if (lastActions[key].end === null) {
-			lastActions[key].end = lastActions[key].start + averageDuration;  // Utiliser la moyenne des durées pour calculer la fin
+			lastActions[key].end = lastActions[key].start + averageDuration;
 			actions.push(lastActions[key]);
 		}
 	}
@@ -56,7 +54,7 @@ function generateGantt(actions) {
 	const philosophers = [...new Set(actions.map(action => action.philosopher))].sort((a, b) => a - b);
 
 	const minTimestamp = Math.min(...actions.map(action => action.start));
-	const maxTimestamp = Math.max(...actions.map(action => action.end !== null ? action.end : minTimestamp + 1)); // Assure que la fin des actions sans fin soit valide
+	const maxTimestamp = Math.max(...actions.map(action => action.end !== null ? action.end : minTimestamp + 1));
 	const totalDuration = maxTimestamp - minTimestamp;
 
 	philosophers.forEach(philosopher => {
@@ -65,7 +63,7 @@ function generateGantt(actions) {
 
 		const label = document.createElement('div');
 		label.classList.add('philosopher-label');
-		label.textContent = `Philosophe ${philosopher}`;
+		label.textContent = `Philosopher ${philosopher}`;
 		row.appendChild(label);
 
 		const actionsForPhilosopher = actions
@@ -76,18 +74,15 @@ function generateGantt(actions) {
 			const bar = document.createElement('div');
 			bar.classList.add('bar');
 
-			// Si l'action n'a pas de fin, utiliser la durée basée sur la moyenne
 			const duration = action.end !== null ? action.end - action.start : maxTimestamp - action.start;
 			const offset = action.start - minTimestamp;
 
-			// Appliquez la largeur et le décalage proportionnels
 			bar.style.width = `${(duration / totalDuration) * 100}%`;
 			bar.style.left = `${(offset / totalDuration) * 100}%`;
 
 			bar.style.maxWidth = '100%';
 			bar.style.width = Math.min(parseFloat(bar.style.width), 100) + '%';
 
-			// Déterminez la couleur de la barre selon l'action
 			if (action.action.includes('eating')) {
 				bar.classList.add('eating');
 			} else if (action.action.includes('thinking')) {
@@ -98,7 +93,6 @@ function generateGantt(actions) {
 				bar.classList.add('unknown');
 			}
 
-			// Ajouter un texte si la barre est suffisamment large
 			if (parseFloat(bar.style.width) > 3) {
 				const actionText = document.createElement('span');
 				actionText.textContent = action.action;
@@ -106,8 +100,7 @@ function generateGantt(actions) {
 				bar.appendChild(actionText);
 			}
 
-			// Afficher la fin de l'action, avec "fin -" si l'action est en cours
-			bar.title = `Philosophe ${philosopher} ${action.action}\nDébut: ${action.start}\nFin: ${action.end !== null ? action.end : 'fin -'}`;
+			bar.title = `Philosopher ${philosopher} ${action.action}\nStart: ${action.start}\nEnd: ${action.end !== null ? action.end : 'end -'}`;
 			row.appendChild(bar);
 		});
 
@@ -122,7 +115,7 @@ document.getElementById('generate-button').addEventListener('click', () => {
 		const actions = parseLogs(logs);
 
 		if (actions.length === 0) {
-			alert('Aucune action valide trouvée dans les logs.');
+			alert('No valid actions found in logs.');
 			return;
 		}
 
