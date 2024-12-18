@@ -7,7 +7,7 @@ body {
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: #4C6B56; /* Vert foncé */
     color: white;
     text-align: center;
     padding: 1em;
@@ -30,7 +30,7 @@ button {
     display: block;
     width: 100%;
     padding: 0.7em;
-    background-color: #4CAF50;
+    background-color: #4C6B56; /* Vert foncé */
     color: white;
     border: none;
     cursor: pointer;
@@ -39,7 +39,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #3F5A47; /* Vert plus foncé */
 }
 
 
@@ -48,9 +48,12 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 1em;
-    overflow-x: auto; /* Permet le défilement horizontal */
-    white-space: nowrap; /* Empêche le contenu de se casser */
-    padding-bottom: 20px; /* Ajouter un peu d'espace en bas pour la scrollbar */
+    overflow-x: auto;
+    /* Permet le défilement horizontal */
+    white-space: nowrap;
+    /* Empêche le contenu de se casser */
+    padding-bottom: 20px;
+    /* Ajouter un peu d'espace en bas pour la scrollbar */
 }
 
 /* Ajustement des rangées de philosophes */
@@ -70,7 +73,6 @@ button:hover {
 }
 
 /* Barres représentant les actions des philosophes */
-/* Barres représentant les actions des philosophes */
 .bar {
     position: absolute;
     height: 100%;
@@ -79,33 +81,41 @@ button:hover {
     font-size: 12px;
     color: white;
     overflow: hidden;
-    max-width: 100%; /* Limiter la taille à 100% */
-    margin-left: 160px; /* Ajouter une marge à gauche pour éviter d'écraser le nom */
+    max-width: 100%;
+    /* Limiter la taille à 100% */
+    margin-left: 160px;
+    /* Ajouter une marge à gauche pour éviter d'écraser le nom */
+    display: flex;
+    justify-content: center;
+    /* Centrer horizontalement */
+    align-items: center;
+    /* Centrer verticalement */
 }
 
 /* Couleurs des différentes actions */
 .bar.eating {
-    background-color: red;
+    background-color: #D37C7C; /* Rouge clair foncé */
 }
 
 .bar.thinking {
-    background-color: green;
+    background-color: #8C9F79; /* Vert mousse foncé */
 }
 
 .bar.sleeping {
-    background-color: blue;
+    background-color: #7A9BB7; /* Bleu gris foncé */
 }
 
 .bar.unknown {
-    background-color: gray;
+    background-color: #B6B6B6; /* Gris foncé */
 }
+
 
 /* Infobulle avec la description de l'action */
 .bar:hover::after {
     position: absolute;
     top: -30px;
     left: 0;
-    background-color: #333;
+    background-color: #333; /* Fond sombre */
     color: white;
     padding: 5px;
     font-size: 0.9em;
