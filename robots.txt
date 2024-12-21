@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://rom98759.github.io/Philosophers-visualizer/sitemap.xml
