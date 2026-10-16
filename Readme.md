@@ -1,5 +1,10 @@
 # Philosophers Visualizer
 
+![Philosophers-visualizer — aperçu](docs/screenshot.jpg)
+
+> _Capture de l'outil en ligne — [version live](https://rom98759.github.io/Philosophers-visualizer/)._
+
+
 This project allows you to visualize the actions of philosophers in the dining philosophers problem in the form of a Gantt chart. The actions (eating, thinking, sleeping) are extracted from logs and displayed interactively.
 
 ## Features
